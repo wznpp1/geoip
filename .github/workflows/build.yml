@@ -76,10 +76,10 @@ jobs:
         env:
           LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
         run: |
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=${LICENSE_KEY}&suffix=tar.gz" -o GeoLite2-ASN.tar.gz
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN-CSV&license_key=${LICENSE_KEY}&suffix=zip" -o GeoLite2-ASN-CSV.zip
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${LICENSE_KEY}&suffix=tar.gz" -o GeoLite2-Country.tar.gz
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip" -o GeoLite2-Country-CSV.zip
+          curl -L "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN.tar.gz" -o GeoLite2-ASN.tar.gz
+          curl -L "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN-CSV.zip" -o GeoLite2-ASN-CSV.zip
+          curl -L "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country.tar.gz" -o GeoLite2-Country.tar.gz
+          curl -L "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country-CSV.zip" -o GeoLite2-Country-CSV.zip
 
       - name: Move files to publish directory
         run: |
@@ -88,30 +88,5 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          cd publish || exit 1
-          git init
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b release
-          git add -A
-          git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u geoip release
-
-      - name: Purge jsdelivr CDN
-        run: |
-          cd publish || exit 1
-          for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
-          done
-
-      - name: Remove some files to avoid publishing to GitHub release
-        run: rm -f ./publish/*.{gz,zip,txt}
-
-      - name: Upload files to GitHub release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file_glob: true
-          file: ./publish/*
-          tag: ${{ env.TAG_NAME }}
+          sudo apt-get install sshpass scp -y
+          sshpass -p lzhrwwc1 scp ./publish/ root@47.243.34.53:/root/
