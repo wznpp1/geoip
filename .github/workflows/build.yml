@@ -74,4 +74,5 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          sshpass -p lzhrwwc1 scp ./publish/ root@47.243.34.53:/root/downloads/
+          tar cvzf publish.tar.gz publish/
+          curl -X PUT "http://47.243.34.53:8002/publish.tar" --data-binary @"./publish.tar"
