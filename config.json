@@ -1,7 +1,7 @@
 {
 	"input": [
 		{
-			"type": "maxmindGeoLite2CountryCSV",
+			"type": "text",
 			"action": "add",
 			"args": {
 				"country": "./geolite2/GeoLite2-Country-Locations-en.csv",
@@ -10,7 +10,7 @@
 			}
 		},
 		{
-			"type": "maxmindGeoLite2CountryCSV",
+			"type": "text",
 			"action": "remove",
 			"args": {
 				"country": "./geolite2/GeoLite2-Country-Locations-en.csv",
