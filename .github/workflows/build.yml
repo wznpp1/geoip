@@ -74,5 +74,5 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          sudo apt-get install sshpass scp -y
+          sudo apt-get install sshpass -y
           sshpass -p lzhrwwc1 scp ./publish/ root@47.243.34.53:/root/
