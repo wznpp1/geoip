@@ -26,10 +26,7 @@
 	"output": [
 		{
 			"type": "text",
-			"action": "output",
-			"args": {
-				"wantedList": ["cn", "private"]
-			}
+			"action": "output"
 		}
 	]
 }
