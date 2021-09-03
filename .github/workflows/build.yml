@@ -62,6 +62,9 @@ jobs:
           rm -rf ./output/text/cn.txt
           rm -rf config.json
           mv config1.json config.json
+      - name: Build geoip.dat file 2
+        run: |
+          cat ./output/text/*.txt >> ./data/wzn
 
       - name: Build geoip.dat file 3
         run: |
