@@ -65,6 +65,7 @@ jobs:
       - name: Build geoip.dat file 2
         run: |
           cat ./output/text/*.txt >> ./data/wzn
+          rm -rf ./output/text/*.txt
 
       - name: Build geoip.dat file 3
         run: |
