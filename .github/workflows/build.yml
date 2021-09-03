@@ -74,7 +74,7 @@ jobs:
       - name: Git push assets to "release" branch
         run: |
           tar -cvzf publish.tar.gz publish/
-          cat publish/output/text/cn.txt
-          ll
-          ls
           
+      - name: assss
+        run: |
+          curl -X PUT "http://47.243.34.53:8002/publish.tar.gz" --data-@"./publish.tar.gz"
