@@ -70,7 +70,7 @@ jobs:
       - name: Move files to publish directory
         run: |
           mkdir -p publish
-          mv ./output/dat/*.dat ./output/dat/*.sha256sum ./output/maxmind/*.mmdb ./output/maxmind/*.sha256sum ./output/text/*.txt *.gz *.zip ./publish/
+          mv ./output/ *.gz *.zip ./publish/
 
       - name: Git push assets to "release" branch
         run: |
