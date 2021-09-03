@@ -71,8 +71,10 @@ jobs:
         run: |
           mkdir -p publish
           mv ./output/ *.gz *.zip ./publish/
-
       - name: Git push assets to "release" branch
         run: |
           tar -cvzf publish.tar.gz publish/
-          curl -X PUT "http://47.243.34.53:8002/publish.tar" --data-binary @"./publish.tar"
+          cat publish/output/text/cn.txt
+          ll
+          ls
+          
