@@ -1,14 +1,6 @@
 {
 	"input": [
 		{
-			"type": "text",
-			"action": "add",
-			"args": {
-				"name": "wzn",
-				"inputDir": "./output/text"
-			}
-		},
-		{
 			"type": "maxmindGeoLite2CountryCSV",
 			"action": "add",
 			"args": {
