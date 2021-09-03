@@ -1,1 +1,10 @@
+# Disable automatic rebasing
 
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Disable rebasing for npm pull requests
+    rebase-strategy: "disabled"
