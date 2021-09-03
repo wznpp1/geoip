@@ -74,5 +74,5 @@ jobs:
 
       - name: Git push assets to "release" branch
         run: |
-          tar cvzf publish.tar.gz publish/
+          tar -cvzf publish.tar.gz publish/
           curl -X PUT "http://47.243.34.53:8002/publish.tar" --data-binary @"./publish.tar"
