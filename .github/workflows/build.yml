@@ -57,6 +57,15 @@ jobs:
       - name: Build geoip.dat file
         run: |
           go run ./
+      - name: Build geoip.dat file 2
+        run: |
+          rm -rf ./output/text/cn.txt
+          rm -rf config.json
+          mv config1.json config.json
+
+      - name: Build geoip.dat file 3
+        run: |
+          go run ./
 
       - name: Download GeoLite2
         env:
