@@ -28,6 +28,10 @@
 			"args": {
 				"outputName": "geo.mmdb"
 			}
+		},
+		{
+			"type": "text",
+			"action": "output"
 		}
 	]
 }
