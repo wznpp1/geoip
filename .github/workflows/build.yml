@@ -49,7 +49,7 @@ jobs:
         env:
           LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
         run: |
-          curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip" -o GeoLite2-Country-CSV.zip
+          curl -L "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country-CSV.zip" -o GeoLite2-Country-CSV.zip
           unzip GeoLite2-Country-CSV.zip
           rm -f GeoLite2-Country-CSV.zip
           mv GeoLite2* geolite2
